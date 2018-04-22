@@ -88,29 +88,30 @@
       function processRequest(e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
           var response = JSON.parse(xhr.responseText);
-          if (response["1"] === "1") {
+          console.log(response);
+          if (response["1"] === 1) {
             document.getElementById("1").setAttribute("class", "btn btn-danger btn-block");
           }
-          if (response["2"] === "1") {
+          if (response["2"] === 1) {
             document.getElementById("2").setAttribute("class", "btn btn-danger btn-block");
           }
-          if (response["3"] === "1") {
+          if (response["3"] === 1) {
             document.getElementById("3").setAttribute("class", "btn btn-danger btn-block");
           }
-          if (response["4"] === "1") {
+          if (response["4"] === 1) {
             document.getElementById("4").setAttribute("class", "btn btn-danger btn-block");
           }
 
-          if (response["1"] === "0") {
+          if (response["1"] === 0) {
             document.getElementById("1").setAttribute("class", "btn btn-primary btn-block");
           }
-          if (response["2"] === "0") {
+          if (response["2"] === 0) {
             document.getElementById("2").setAttribute("class", "btn btn-primary btn-block");
           }
-          if (response["3"] === "0") {
+          if (response["3"] === 0) {
             document.getElementById("3").setAttribute("class", "btn btn-primary btn-block");
           }
-          if (response["4"] === "0") {
+          if (response["4"] === 0) {
             document.getElementById("4").setAttribute("class", "btn btn-primary btn-block");
           }
           
