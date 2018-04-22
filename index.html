@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <!-- <meta htto-equiv="refresh" content="5" /> -->
     <title>Logo Nav - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -15,16 +15,24 @@
 
     <!-- Custom styles for this template -->
     <link href="css/logo-nav.css" rel="stylesheet">
-
+    <style>
+      .btn-block {
+    padding: 5% 0; 
+    /* define values in pixels / Percentage or em. whatever suits 
+       your requirements */
+    }
+    .grid-container {
+  display: grid;
+  }
+    </style>
   </head>
-
   <body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="http://placehold.it/300x60?text=Logo" width="150" height="30" alt="">
+          <img src="https://3.bp.blogspot.com/-5fGiMdXckEg/VQIZaM8jyDI/AAAAAAAAAMU/ehrzTKFuIe0/s1600/hotspot-logo.jpg" width="100" height="50" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -52,9 +60,63 @@
 
     <!-- Page Content -->
     <div class="container">
-      <h1 class="mt-5">Logo Nav by Start Bootstrap</h1>
-      <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap 4! Make sure to set the width and height of the logo within the HTML. For best results, it's recommended that you use an SVG image as your logo.</p>
+      <!-- <canvas id="myCanvas">
+      <script>
+
+        var c = document.getElementById("myCanvas");  
+        var ctx = c.getContext("2d");
+        ctx.rect(20, 20, 150, 100);
+        ctx.stroke();
+      </script>
+      </canvas> -->
+      <h1 class="mt-5"></h1>
+      <!-- <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap 4! Make sure to set the width and height of the logo within the HTML. For best results, it's recommended that you use an SVG image as your logo.</p> -->
+    <div class="grid-container">
+    <button id="1" type="button" class="btn btn-primary btn-block">Room 1</button>
+    <button id="2" type="button" class="btn btn-primary btn-block">Room 2</button>
+    <button id="3" type="button" class="btn btn-primary btn-block">Room 3</button>
+    <button id="4" type="button"class="btn btn-primary btn-block">Room 4</button>
     </div>
+    </div>
+    <script>
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', "https://iothackhotspots.herokuapp.com/rooms", true);
+      xhr.send();
+
+      xhr.onreadystatechange = processRequest;
+
+      function processRequest(e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response["1"] === "1") {
+            document.getElementById("1").setAttribute("class", "btn btn-danger btn-block");
+          }
+          if (response["2"] === "1") {
+            document.getElementById("2").setAttribute("class", "btn btn-danger btn-block");
+          }
+          if (response["3"] === "1") {
+            document.getElementById("3").setAttribute("class", "btn btn-danger btn-block");
+          }
+          if (response["4"] === "1") {
+            document.getElementById("4").setAttribute("class", "btn btn-danger btn-block");
+          }
+
+          if (response["1"] === "0") {
+            document.getElementById("1").setAttribute("class", "btn btn-primary btn-block");
+          }
+          if (response["2"] === "0") {
+            document.getElementById("2").setAttribute("class", "btn btn-primary btn-block");
+          }
+          if (response["3"] === "0") {
+            document.getElementById("3").setAttribute("class", "btn btn-primary btn-block");
+          }
+          if (response["4"] === "0") {
+            document.getElementById("4").setAttribute("class", "btn btn-primary btn-block");
+          }
+          
+    }
+}
+      </script>
     <!-- /.container -->
 
     <!-- Bootstrap core JavaScript -->
